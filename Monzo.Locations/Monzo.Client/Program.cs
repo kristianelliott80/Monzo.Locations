@@ -51,7 +51,7 @@
                 // Print Physical Transactions by Date.
                 WriteLine("ID\tName\tCreated\tLatitude\tLongitude\t");
 
-                var transactions = service.GetPhysicalTransactionsByDate(accounts.AccountList.ElementAt(0), new DateTime(2017, 12, 22), new DateTime(2018, 01, 03));
+                var transactions = service.GetPhysicalTransactionsByDate(accounts.AccountList.ElementAt(0), DateTime.Now.AddDays(-7.0), DateTime.Now);
                 transactions.TransactionList = transactions.TransactionList.Where(x => x.Merchant != null && x.Merchant.Address != null);
 
                 foreach (var t in transactions.TransactionList.OrderBy(x => x.Created))
